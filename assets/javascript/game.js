@@ -1,6 +1,33 @@
-//Computer selects random word as default.
+//Declare global variables.
 
-//Listen for user keystroke
+var words = [
+    'hogwarts',
+    'muggle',
+    'voldemort',
+    'magic'];
+
+var guessingWord
+var lettersGuessed
+var numOfGuesses = 10;
+var wins = 0;
+var guessingWordDisplay
+
+//Computer displays preset values, selects random word as default and shows the letters as dashes.
+
+function getItem() {
+
+    winsDisplay.textContent = wins;
+    numOfGuessesDisplay.textContent = numOfGuesses;
+    
+    guessingWord = words[Math.floor(Math.random() * words.length)];
+
+    guessingWordDisplay.textContent = []
+        for (var i = 0; i < guessingWord.length; i ++)
+        guessingWordDisplay.push('-');
+
+}
+
+//Listen for user keystroke.
 
 //Store that value in a variable
 

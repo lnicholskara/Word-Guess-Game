@@ -11,7 +11,7 @@
        <link href="https://fonts.googleapis.com/css?family=Bree+Serif&amp;subset=latin-ext" rel="stylesheet">
    </head>
 
-<body>
+<body onload="getItem()">
 
    <header>
        <nav class="top"> 
@@ -25,11 +25,13 @@
         <div class="wrapper">
 
             <p class="instructions">Press any key to get started!</p><br>
-            <p>Wins:</p><div id="winsDisplay">0</div><br><br>
+            <p>Wins:</p><div id="winsDisplay"></div><br><br>
 
-            <p>Current Word</p><br>    
+            <p>Current Word:</p><br><br>
+            
+                <span id="guessingWordDisplay"></span><br><br><br>
 
-            <p>Number of Guesses Remaining:</p><div id="numOfGuessDisplay">10</div><br>
+            <p>Number of Guesses Remaining:</p><div id="numOfGuessesDisplay"></div><br>
             <p>Letters Already Guessed:</p><div id="lettersGuessedDisplay"></div><br>
 
 

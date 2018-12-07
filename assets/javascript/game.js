@@ -11,7 +11,6 @@ var lettersGuessed = []
 var numOfGuesses = 10;
 var wins = 0;
 var answerArray
-var remainingLetters
 
 //Computer displays preset values, selects random word as default and shows the letters as dashes.
 
@@ -23,36 +22,68 @@ function getItem() {
     guessingWord = words[Math.floor(Math.random() * words.length)];
 
     answerArray = [];
+
     for (var i = 0; i < guessingWord.length; i++) {
-        answerArray[i] = "_";}
+        answerArray[i] = "_";
+    }
 
-    answerArrayDisplay.textContent = answerArray.join(" ")
+    answerArrayDisplay.textContent = answerArray.join(" ");
 
-    remainingLetters = guessingWord.length;
+    lettersGuessedDisplay.textContent = lettersGuessed;
     
 }
 
-while (remainingLetters > 0) {
-    document.onkeyup = function(event) 
-      {var userChoice = event.key;
-      console.log(userChoice);
+// Take input from the player or listen for user keystroke.
+document.onkeyup = function(event) {
+    var userChoice = event.key;
+    console.log(userChoice);
+    
+    // Check if the letter the user chose matches any of the guessingWord's letters
+    var userGuessedRight = false;
 
+    for (var i = 0; i < guessingWord.length; i++) {
+        var letter = guessingWord[i];
 
-
-      if (userChoice < 0) {
-        lettersGuessed[i] = event.key;
-        lettersGuessedDisplay.textContent = lettersGuessed
-
+        if (userChoice.toLowerCase() == letter) {
+            answerArray[i] = letter;
+            userGuessedRight = true;
         }
-      
-      }
-    // Game code goes here
-    // Show the player their progress
-    // Take input from the player
-    // Update answerArray and remainingLetters for every correct guess
-}
 
-//Listen for user keystroke.
+        else {
+            userGuessedRight = false;
+        }
+
+    }
+
+    // Show the player their progress
+    // Update answerArrayDisplay for every correct guess
+
+    if (userGuessedRight = true) {
+        answerArrayDisplay.textContent = answerArray.join(" ")
+    }
+    
+    // Update numOfGuessesDisplay and lettersGuessedDisplay for every correct guess
+    
+    else {
+        numOfGuesses--;
+        numOfGuessesDisplay.textContent = numOfGuesses;
+
+        lettersGuessed.push(letter);
+        lettersGuessedDisplay.textContent = lettersGuessed;
+    }
+    
+    // Check if the game is over
+
+    if (answerArray == ["h", "o", "g", "w", "a", "r", "t", "s"] || answerArray == ["m", "u", "g", "g", "l", "e"] || answerArray == ["v", "o", "l", "d", "e", "m", "o", 'r', "t"] || answerArray == ["m", "a", "g", "i", "c"]) {
+        wins++;
+        getItem();
+    }
+
+    else if (numOfGuesses = 0) {
+        getItem();
+    }
+
+}
 
 //Store that value in a variable
 

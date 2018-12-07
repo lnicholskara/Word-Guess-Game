@@ -36,21 +36,24 @@ function getItem() {
 // Take input from the player or listen for user keystroke.
 document.onkeyup = function(event) {
     var userChoice = event.key;
-    console.log(userChoice);
     
     // Check if the letter the user chose matches any of the guessingWord's letters
-    var userGuessedRight = false;
+    
 
     for (var i = 0; i < guessingWord.length; i++) {
         var letter = guessingWord[i];
 
+        console.log(letter);
+        console.log(userChoice);
+
         if (userChoice.toLowerCase() == letter) {
             answerArray[i] = letter;
-            userGuessedRight = true;
+            console.log("true-1");
+            break;
         }
 
         else {
-            userGuessedRight = false;
+            console.log("false-1");
         }
 
     }
@@ -58,39 +61,41 @@ document.onkeyup = function(event) {
     // Show the player their progress
     // Update answerArrayDisplay for every correct guess
 
-    if (userGuessedRight = true) {
-        answerArrayDisplay.textContent = answerArray.join(" ")
+    if (userChoice.toLowerCase() == letter) {
+        answerArrayDisplay.textContent = answerArray.join(" ");
+        console.log("true-2");
     }
     
+    ///Need to add else if option for if user guesses the same letter more than once!!!
+
     // Update numOfGuessesDisplay and lettersGuessedDisplay for every correct guess
     
     else {
         numOfGuesses--;
         numOfGuessesDisplay.textContent = numOfGuesses;
 
-        lettersGuessed.push(letter);
+        lettersGuessed.push(userChoice);
         lettersGuessedDisplay.textContent = lettersGuessed;
+        console.log("false-2");
     }
     
-    // Check if the game is over
+    // Check if the game is over and if so, restart the game
 
-    if (answerArray == ["h", "o", "g", "w", "a", "r", "t", "s"] || answerArray == ["m", "u", "g", "g", "l", "e"] || answerArray == ["v", "o", "l", "d", "e", "m", "o", 'r', "t"] || answerArray == ["m", "a", "g", "i", "c"]) {
+    if (answerArray = ["h", "o", "g", "w", "a", "r", "t", "s"] || answerArray == ["m", "u", "g", "g", "l", "e"] || answerArray == ["v", "o", "l", "d", "e", "m", "o", 'r', "t"] || answerArray == ["m", "a", "g", "i", "c"]) {
         wins++;
         getItem();
+        console.log("true-3");
     }
 
-    else if (numOfGuesses = 0) {
+     if (numOfGuessesDisplay >= 0) {
         getItem();
+        console.log("false-3");
     }
+
+    else {
+        console.log("false-4");
+        return;
+
+    } 
 
 }
-
-//Store that value in a variable
-
-//Compare that value to the word - if match, show on screen - else remove guess and include under letters guessed
-
-//Continue or loop logic through all guesses
-
-//If all letters guessed win + increase wins count
-
-//Else automatically restart 

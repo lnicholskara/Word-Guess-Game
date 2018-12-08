@@ -16,11 +16,15 @@
    <header>
 
        <nav class="top">
-
-           
-            <img class="hplogo" src="assets/images/Harry potter logo.png" alt ="Harry Potter Logo">
+            
             <p class="title">Harry Potter Word Guess</p>
-       
+                
+            <audio id="my_audio" autoplay>
+
+                <source src="assets/images/Hedwigs_Theme-4096.mp3" type="audio/mpeg">
+
+            </audio>
+            
         </nav>
 
    </header>
@@ -31,7 +35,7 @@
 
             <p class="instructions">Press any key to get started!</p><br>
 
-                    <img class="hppicture" src="assets/images/DeathlyHallows.png" alt ="Harry Potter Image">
+                <img class="hppicture" src="assets/images/DeathlyHallows.png" alt ="Harry Potter Image">
         
 
                     <p>Wins:</p><div id="winsDisplay">0</div><br><br>
@@ -39,11 +43,10 @@
                     <p class="underline">Current Word:</p><br><br>
                     <div id='answerArrayDisplay'></div><br><br>
 
-                    <p>Number of Guesses Remaining:</p><div id="numOfGuessesDisplay"></div><br>
                     <p>Letters Already Guessed:</p><div id="lettersGuessedDisplay"></div><br>
-
+                    <p>Number of Guesses Remaining:</p><div id="numOfGuessesDisplay"></div><br>        
+              
                     
-                
         </div>
     
     </div>
